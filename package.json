@@ -1,6 +1,6 @@
 {
   "name": "rebel-ops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rebel Alliance Death Star Reconnaissance Platform - Azure infrastructure engineered by AI agents",
   "type": "module",
   "private": true,

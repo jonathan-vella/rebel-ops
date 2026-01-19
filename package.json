@@ -10,6 +10,7 @@
     "preview": "cd demo-app && npm run preview",
     "api:start": "cd api && npm start",
     "lint": "npm run lint --workspaces",
+    "lint:artifact-templates": "node scripts/validate-artifact-templates.mjs",
     "install:all": "npm install && cd demo-app && npm install && cd ../api && npm install"
   },
   "workspaces": [

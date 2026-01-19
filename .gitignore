@@ -46,9 +46,6 @@ __azurite_db*__.json
 *.bicep.json
 main.json
 
-# Agent output (if generated in local workflow)
-agent-output/
-
 # Temporary files
 *.tmp
 .temp/

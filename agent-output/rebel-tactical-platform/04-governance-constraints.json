@@ -1,0 +1,181 @@
+{
+  "discoveredAt": "2026-01-19T14:30:00Z",
+  "subscription": {
+    "name": "noalz",
+    "id": "00858ffc-dded-4f0f-8bbf-e17fff0d47d9"
+  },
+  "tenant": {
+    "id": "2d04cb4c-999b-4e60-a3a7-e8993edc768b"
+  },
+  "policies": [
+    {
+      "name": "JV-Enforce Resource Group Tags v3",
+      "displayName": "JV-Enforce Resource Group Tags v3",
+      "effect": "Deny",
+      "scope": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b",
+      "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b/providers/Microsoft.Authorization/policyDefinitions/27833bcf-5909-4a37-891c-16a3cb06856d",
+      "resourceTypes": ["Microsoft.Resources/subscriptions/resourceGroups"]
+    },
+    {
+      "name": "JV - Inherit Multiple Tags from Resource Group",
+      "displayName": "JV - Inherit Multiple Tags from Resource Group",
+      "effect": "Modify",
+      "scope": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b",
+      "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b/providers/Microsoft.Authorization/policyDefinitions/965dc15a-655c-46be-b95e-72c2b6821ec6",
+      "resourceTypes": ["*"]
+    },
+    {
+      "name": "MCAPSGov Deny Policies",
+      "displayName": "MCAPSGov Deny Policies",
+      "effect": "Deny",
+      "scope": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b",
+      "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b/providers/Microsoft.Authorization/policySetDefinitions/MCAPSGovDenyPolicies",
+      "resourceTypes": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.ContainerService/managedClusters",
+        "Microsoft.Sql/*"
+      ]
+    },
+    {
+      "name": "Block Azure RM Resource Creation",
+      "displayName": "Block Azure RM Resource Creation",
+      "effect": "Deny",
+      "scope": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b",
+      "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b/providers/Microsoft.Authorization/policyDefinitions/f0b6d104-1292-4b81-a05d-c2d8db5a651d",
+      "resourceTypes": [
+        "Microsoft.ClassicCompute/*",
+        "Microsoft.ClassicStorage/*",
+        "Microsoft.ClassicNetwork/*"
+      ]
+    },
+    {
+      "name": "Azure Security Baseline",
+      "displayName": "Azure Security Baseline",
+      "effect": "AuditIfNotExists",
+      "scope": "/providers/Microsoft.Management/managementGroups/2d04cb4c-999b-4e60-a3a7-e8993edc768b",
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+      "resourceTypes": ["*"]
+    },
+    {
+      "name": "EU General Data Protection Regulation (GDPR) 2016/679",
+      "displayName": "EU General Data Protection Regulation (GDPR) 2016/679",
+      "effect": "Audit",
+      "scope": "/subscriptions/00858ffc-dded-4f0f-8bbf-e17fff0d47d9",
+      "policyDefinitionId": null,
+      "resourceTypes": ["*"]
+    },
+    {
+      "name": "PCI DSS v4",
+      "displayName": "PCI DSS v4",
+      "effect": "Audit",
+      "scope": "/subscriptions/00858ffc-dded-4f0f-8bbf-e17fff0d47d9",
+      "policyDefinitionId": null,
+      "resourceTypes": ["*"]
+    }
+  ],
+  "constraints": {
+    "resourceGroup": {
+      "mandatoryTags": [
+        "environment",
+        "owner",
+        "costcenter",
+        "application",
+        "workload",
+        "sla",
+        "backup-policy",
+        "maint-window",
+        "technical-contact"
+      ],
+      "excludedNamePatterns": [
+        "AzureBackupRG*",
+        "ResourceMover*",
+        "databricks-rg*",
+        "NetworkWatcherRG",
+        "microsoft-network",
+        "LogAnalyticsDefaultResources",
+        "rg-amba-*",
+        "DynamicsDeployments*",
+        "MC_myResourceGroup*"
+      ]
+    },
+    "tagInheritance": {
+      "enabled": true,
+      "inheritedTags": [
+        "environment",
+        "owner",
+        "costcenter",
+        "application",
+        "workload",
+        "sla",
+        "backup-policy",
+        "maint-window",
+        "tech-contact"
+      ]
+    },
+    "security": {
+      "minimumTlsVersion": "1.2",
+      "nsgOnSubnets": "AuditIfNotExists",
+      "secretsExpiration": "Audit",
+      "keysExpiration": "Audit"
+    },
+    "blockedResourceTypes": [
+      "Microsoft.ClassicCompute/virtualMachines",
+      "Microsoft.ClassicCompute/domainNames",
+      "Microsoft.ClassicStorage/storageAccounts",
+      "Microsoft.ClassicNetwork/virtualNetworks",
+      "Microsoft.ClassicNetwork/reservedIps",
+      "Microsoft.ClassicNetwork/networkSecurityGroups",
+      "Microsoft.MarketplaceApps/classicDevServices"
+    ]
+  },
+  "resourceSpecificConstraints": {
+    "staticWebApps": {
+      "blockingPolicies": false,
+      "httpsEnforced": true,
+      "notes": "HTTPS enforced by platform"
+    },
+    "applicationInsights": {
+      "blockingPolicies": false,
+      "workspaceBasedRecommended": true,
+      "notes": "Workspace-based mode for Log Analytics integration"
+    },
+    "logAnalytics": {
+      "blockingPolicies": false,
+      "diagnosticSettingsRecommended": true,
+      "notes": "Enable allLogs category for Security Baseline compliance"
+    }
+  },
+  "recommendations": {
+    "mandatory": [
+      {
+        "action": "Add 9 mandatory tags to Resource Group",
+        "reason": "JV-Enforce Resource Group Tags v3 policy (Deny effect)",
+        "tags": {
+          "environment": "prod",
+          "owner": "rebel-alliance-ops",
+          "costcenter": "rebel-ops-001",
+          "application": "rebel-tactical-platform",
+          "workload": "web-app",
+          "sla": "standard",
+          "backup-policy": "none",
+          "maint-window": "sunday-02:00-06:00",
+          "technical-contact": "rebel-devops@alliance.io"
+        }
+      }
+    ],
+    "recommended": [
+      {
+        "action": "Use workspace-based Application Insights",
+        "reason": "Best practice for Log Analytics integration"
+      },
+      {
+        "action": "Enable diagnostic settings on all resources",
+        "reason": "Azure Security Baseline compliance"
+      },
+      {
+        "action": "Document data flows for GDPR audit trail",
+        "reason": "GDPR 2016/679 compliance"
+      }
+    ]
+  }
+}

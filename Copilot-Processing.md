@@ -2,102 +2,85 @@
 
 ## Request Summary
 
-**Task**: Implement Bicep templates based on the implementation plan for Rebel Tactical Platform
+**Task**: Create Azure Resource Health Diagnostician Agent
 
 **Date**: 2026-01-20
 
 ## Action Plan
 
-### Phase 1: Foundation Infrastructure
+### Phase 1: Research & Preparation
 
-- [ ] TASK-001: Create folder structure `infra/bicep/rebel-tactical/`
-- [ ] TASK-002: Create `main.bicep` orchestrator with mandatory tags
-- [ ] TASK-003: Define parameters and variables
+- [x] TASK-001: Read agent definition instructions
+- [x] TASK-002: Read source prompt file (azure-resource-health-diagnose.prompt.md)
+- [x] TASK-003: Review existing agent patterns (azure-principal-architect.agent.md)
 
-### Phase 2: Observability Stack Modules
+### Phase 2: Agent Implementation
 
-- [ ] TASK-004: Create `modules/log-analytics.bicep`
-- [ ] TASK-005: Create `modules/app-insights.bicep`
+- [x] TASK-004: Create agent definition file with YAML frontmatter
+- [x] TASK-005: Define 6-phase interactive workflow
+- [x] TASK-006: Add approval-first command execution patterns
+- [x] TASK-007: Include diagnostic KQL query library
+- [x] TASK-008: Add handoffs to related agents
 
-### Phase 3: Static Web App Module
+### Phase 3: Documentation
 
-- [ ] TASK-006: Create `modules/static-web-app.bicep`
-
-### Phase 4: Parameter File and Documentation
-
-- [ ] TASK-007: Create `main.bicepparam` for production
-- [ ] TASK-008: Create `README.md` with deployment instructions
-
-### Phase 5: Deployment Script
-
-- [ ] TASK-009: Create `deploy.ps1` PowerShell deployment script
-
-### Phase 6: Validation
-
-- [ ] TASK-010: Run `bicep build` validation
-- [ ] TASK-011: Run `bicep lint` validation
-- [ ] TASK-012: Run `bicep format` formatting
+- [x] TASK-009: Update Copilot-Processing.md with summary
 
 ## Progress Tracking
 
-| Task     | Status       | Notes                                                          |
-| -------- | ------------ | -------------------------------------------------------------- |
-| TASK-001 | ✅ completed | Created `infra/bicep/rebel-tactical/modules/` folder structure |
-| TASK-002 | ✅ completed | Created `main.bicep` with subscription-scoped deployment       |
-| TASK-003 | ✅ completed | Defined 9 mandatory tags and operational tags                  |
-| TASK-004 | ✅ completed | Created `modules/log-analytics.bicep`                          |
-| TASK-005 | ✅ completed | Created `modules/app-insights.bicep`                           |
-| TASK-006 | ✅ completed | Created `modules/static-web-app.bicep`                         |
-| TASK-007 | ✅ completed | Created `main.bicepparam` production parameters                |
-| TASK-008 | ✅ completed | Created `README.md` with deployment instructions               |
-| TASK-009 | ✅ completed | Created `deploy.ps1` PowerShell script                         |
-| TASK-010 | ✅ completed | `bicep build` passed for all files                             |
-| TASK-011 | ✅ completed | `bicep lint` passed                                            |
-| TASK-012 | ✅ completed | `bicep format` applied to all files                            |
+| Task     | Status       | Notes                                                |
+| -------- | ------------ | ---------------------------------------------------- |
+| TASK-001 | ✅ completed | Read agents-definitions.instructions.md              |
+| TASK-002 | ✅ completed | Read all 324 lines of source prompt                  |
+| TASK-003 | ✅ completed | Reviewed azure-principal-architect.agent.md patterns |
+| TASK-004 | ✅ completed | Created agent with tools and handoffs                |
+| TASK-005 | ✅ completed | Implemented 6-phase interactive workflow             |
+| TASK-006 | ✅ completed | Added approval prompts for all commands              |
+| TASK-007 | ✅ completed | Included error, performance, App Insights queries    |
+| TASK-008 | ✅ completed | Added handoffs to Architect and Docs agents          |
+| TASK-009 | ✅ completed | Updated this processing log                          |
 
 ## Summary
 
-**✅ Bicep Implementation Complete**
+**✅ Agent Implementation Complete**
 
-### Files Created
+### File Created
 
-| File                           | Purpose                                 | Lines |
-| ------------------------------ | --------------------------------------- | ----- |
-| `main.bicep`                   | Main orchestrator (subscription-scoped) | ~190  |
-| `main.bicepparam`              | Production parameters                   | ~20   |
-| `modules/log-analytics.bicep`  | Log Analytics Workspace                 | ~80   |
-| `modules/app-insights.bicep`   | Application Insights                    | ~90   |
-| `modules/static-web-app.bicep` | Static Web App                          | ~110  |
-| `deploy.ps1`                   | PowerShell deployment script            | ~280  |
-| `README.md`                    | Deployment documentation                | ~200  |
+| File                                                          | Purpose                      | Lines |
+| ------------------------------------------------------------- | ---------------------------- | ----- |
+| `.github/agents/azure-resource-health-diagnostician.agent.md` | Interactive diagnostic agent | ~600  |
 
-### Validation Results
+### Agent Features
 
-- ✅ `bicep build main.bicep` - Passed
-- ✅ `bicep lint main.bicep` - Passed (no warnings)
-- ✅ `bicep format` - Applied to all files
-- ✅ All 3 module files validated successfully
+| Feature                      | Implementation                                                    |
+| ---------------------------- | ----------------------------------------------------------------- |
+| **Approval-First Execution** | All commands presented with explanation before execution          |
+| **Single-Resource Focus**    | One resource at a time for thorough analysis                      |
+| **6-Phase Workflow**         | Discovery → Health → Logs → Classification → Remediation → Report |
+| **Interactive Checkpoints**  | User confirmation at each phase transition                        |
+| **KQL Query Library**        | Error, performance, App Insights diagnostic queries               |
+| **Report Generation**        | Saves to `agent-output/{project}/08-resource-health-report.md`    |
+| **Handoffs**                 | Azure Principal Architect, Workload Documentation Generator       |
 
-### Key Features
+### Design Decisions Applied
 
-- **9 Mandatory Tags**: Compliant with JV-Enforce Resource Group Tags v3 policy
-- **CAF Naming**: All resources follow Cloud Adoption Framework patterns
-- **Workspace-based App Insights**: Compliant with Azure Security Baseline
-- **Standard Static Web App**: Supports managed Functions runtime
-- **Professional Deployment Script**: Pre-flight checks, what-if analysis, confirmation
-  | Policy Assignments | 10+ discovered |
+| Decision          | Choice                    | Rationale                |
+| ----------------- | ------------------------- | ------------------------ |
+| Command Execution | Approval-first            | Safety over speed        |
+| Resource Scope    | Single-resource           | Thorough analysis        |
+| Report Location   | `agent-output/{project}/` | Consistent with workflow |
 
-**Key Governance Constraints Applied:**
+### How to Use
 
-- ✅ JV-Enforce Resource Group Tags v3 (Deny - 9 mandatory tags)
-- ✅ JV - Inherit Multiple Tags from Resource Group (Modify)
-- ✅ Block Azure RM Resource Creation (Deny - Classic resources only)
-- ✅ Azure Security Baseline (AuditIfNotExists)
-- ✅ GDPR 2016/679 and PCI DSS v4 (Audit)
+1. Open Copilot: `Ctrl+Alt+I`
+2. Select agent: **Azure Resource Health Diagnostician**
+3. Prompt example: "Diagnose the health of my Static Web App stapp-rebel-tactical-prod-weu"
+4. Follow interactive prompts through 6 phases
+5. Review generated report in `agent-output/{project}/`
 
-**Artifacts Created/Updated:**
+---
 
-1. `agent-output/rebel-tactical-platform/04-governance-constraints.md` ✅ NEW
+_Agent ready for use. Please review and remove this file when done._
 2. `agent-output/rebel-tactical-platform/04-governance-constraints.json` ✅ NEW
 3. `agent-output/rebel-tactical-platform/04-implementation-plan.md` ✅ RECREATED
 4. `agent-output/rebel-tactical-platform/README.md` ✅ UPDATED

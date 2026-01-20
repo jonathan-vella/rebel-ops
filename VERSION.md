@@ -1,10 +1,10 @@
 # Version Information
 
-**Current Version:** 1.0.1
+**Current Version:** 1.1.0
 
-**Last Updated:** 2026-01-19
+**Last Updated:** 2026-01-20
 
-**Build:** 5a9eaf6
+**Build:** 22972a1
 
 ## Version History
 

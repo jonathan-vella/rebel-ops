@@ -22,36 +22,16 @@ production-ready Azure infrastructure using the **7-step Agentic InfraOps workfl
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Rebel Alliance HQ                        │
-│                   (Azure Static Web Apps)                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────┐          ┌────────────────────────┐  │
-│  │   3D Tactical   │          │   Mission Briefings    │  │
-│  │ Death Star View │◄────────►│     Dashboard          │  │
-│  │  (Three.js)     │          │   (React + Vite)       │  │
-│  └─────────────────┘          └────────────────────────┘  │
-│           │                              │                 │
-│           └──────────────┬───────────────┘                 │
-│                          │                                 │
-│                    ┌─────▼─────┐                          │
-│                    │  API Layer │                          │
-│                    │ /api/missions                         │
-│                    │ /api/intelligence                     │
-│                    │ /api/reports                          │
-│                    └───────────┘                           │
-│                  (Managed Functions)                        │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-                ┌───────────────────────┐
-                │ Application Insights   │
-                │   + Log Analytics      │
-                └───────────────────────┘
-```
+![Rebel Alliance Command Center Architecture](./rebel-ops-architecture.png)
+
+_Architecture diagram generated using Python's `diagrams` library. To regenerate: `python architecture-diagram.py`_
+
+**Key Components:**
+
+- **🚀 Frontend**: React + Vite with Three.js for 3D Death Star visualization
+- **⚡ Managed API**: Three Azure Functions endpoints for missions, intelligence, and reports
+- **🛡️ Monitoring**: Application Insights with Log Analytics for telemetry and mission logs
+- **🌟 Platform**: Azure Static Web Apps (Standard tier) with integrated Functions
 
 ## Features
 
